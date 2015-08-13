@@ -42,6 +42,8 @@ Be aware that if you update a property (e.g. `tagBackgroundColor`) for a `TagLis
 
 ## Installation
 
+Turns out that installation via CocoaPods may be buggy. If you can't make it work from Interface Builder, please check this [Stack Overflow answer](http://stackoverflow.com/questions/26567650/live-rendering-a-custom-component-using-ib-designable-from-a-pod-dependency/28108248#28108248). Using it without CocoaPods seems to work perfectly, though.
+
 TagListView-ObjC is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
