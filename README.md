@@ -1,4 +1,7 @@
-# TagListView (Objective-C Version)
+# TagListView-ObjC
+
+[![Version](https://img.shields.io/cocoapods/v/TagListView-ObjC.svg?style=flat)](http://cocoapods.org/pods/TagListView-ObjC)
+[![License](https://img.shields.io/cocoapods/l/TagListView-ObjC.svg?style=flat)](http://cocoapods.org/pods/TagListView-ObjC)
 
 Simple but highly customizable iOS tag list view, in Objective-C. The APIs are *not* stable before 1.0. Use it if you don't want to use the Swift version.
 
@@ -6,7 +9,7 @@ Supports Storyboard, Auto Layout, and @IBDesignable.
 
 <img alt="Screenshot" src="Screenshots/Screenshot.png" width="310">
 
-This project is a simple port to ObjC from XHacker's [TagListView](https://github.com/xhacker/TagListView) library, I try to remain as compatible as possible. This README itself (and the images/screenshots) are from XHacker's too.
+This project is a port to ObjC from XHacker's [TagListView](https://github.com/xhacker/TagListView) library, I tried to remain as compatible as possible. This README itself (and the images/screenshots) are from XHacker's too.
 
 My motivation to do this: At work, I had an ObjC-written project, and want to use that library. I didn't like at all that my app increases 3MB on size (because Swift libs) for only a few code files. Using this version, the increase in size is very tiny (<5kb).
 
@@ -39,7 +42,14 @@ Be aware that if you update a property (e.g. `tagBackgroundColor`) for a `TagLis
 
 ## Installation
 
-On the next few days, I'll make available this lib in CocoaPods at least. For now, you can simply checkout the sample project. The real library files are in the **"TagListView"** folder, simply drag it into your project.
+TagListView-ObjC is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod "TagListView-ObjC"
+```
+
+Instead, if you don't want to use CocoaPods, you can simply checkout the sample project. Library files are in the **"TagListView/"** folder, simply drag it into your project.
 
 ## Contribution
 
@@ -47,4 +57,4 @@ Pull requests are welcome! If you want to do something big, please open an issue
 
 ## License
 
-MIT
+TagListView-ObjC is available under the MIT license. See the LICENSE file for more info.
