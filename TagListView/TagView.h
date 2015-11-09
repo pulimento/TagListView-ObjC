@@ -22,4 +22,6 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable CGFloat paddingX;
 @property (nonatomic) UIFont *textFont;
 
+@property (nonatomic, copy) void (^onTap)(TagView *);
+
 @end

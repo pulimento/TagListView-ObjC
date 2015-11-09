@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "TagListView.h"
+#import "TagView.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet TagListView *tagListView;
@@ -20,7 +21,9 @@
     [super viewDidLoad];
     
     // Add tags programmatically
-    [self.tagListView addTag:@"Those"];
+    [[self.tagListView addTag:@"Those"] setOnTap:^(TagView *tagView) {
+        NSLog(@"on tap tagView:%@", tagView);
+    }];
     [self.tagListView addTag:@"are"];
     [self.tagListView addTag:@"some"];
     [self.tagListView addTag:@"example"];

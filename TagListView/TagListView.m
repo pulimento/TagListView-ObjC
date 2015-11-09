@@ -158,7 +158,7 @@
     return CGSizeMake(self.frame.size.width, height);
 }
 
-- (void)addTag:(NSString *)title {
+- (TagView *)addTag:(NSString *)title {
     TagView *tagView = [[TagView alloc] initWithTitle:title];
     
     [tagView setTextColor: [self textColor]];
@@ -170,7 +170,11 @@
     [tagView setPaddingX: [self paddingX]];
     [tagView setTextFont: [self textFont]];
     
+    [tagView addTarget:self action:@selector(tagPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
     [self addTagView: tagView];
+    
+    return tagView;
 }
 
 - (void) addTagView:(TagView *)tagView {
@@ -195,6 +199,12 @@
     }
     [self setTagViews:[[NSMutableArray alloc] init]];
     [self rearrangeViews];
+}
+
+- (void)tagPressed:(TagView *)sender {
+    if (sender.onTap) {
+        sender.onTap(sender);
+    }
 }
 
 @end
