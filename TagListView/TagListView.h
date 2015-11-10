@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class TagView;
+
 IB_DESIGNABLE
 
 @interface TagListView : UIView
@@ -23,14 +25,14 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable CGFloat marginX;
 @property (nonatomic) UIFont *textFont;
 
+
 // Delegate variables
 @property (nonatomic) CGFloat tagViewHeight;
 @property (nonatomic) NSMutableArray *tagViews;
 @property (nonatomic) int rows;
 
-- (void)addTag:(NSString *)title;
+- (TagView *)addTag:(NSString *)title;
 - (void)removeTag:(NSString *)title;
 - (void)removeAllTags;
-
 
 @end
