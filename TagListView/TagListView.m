@@ -182,6 +182,13 @@
     [self rearrangeViews];
 }
 
+- (void)addTagsAccordingToDataSourceArray:(NSArray<NSString *> *)dataSourceArray withOnTapForEach:(void(^)(TagView *tagView))onTapBlock
+{
+    for (NSString *tagName in dataSourceArray) {
+        [[self addTag:tagName] setOnTap:onTapBlock];
+    }
+}
+
 - (void)removeTag:(NSString *)title {
     // Author's note: Loop the array in reversed order to remove items during loop
     for(int index = (int)[[self tagViews] count] - 1 ; index <= 0; index--) {
