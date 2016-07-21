@@ -185,7 +185,10 @@
 - (void)addTagsAccordingToDataSourceArray:(NSArray<NSString *> *)dataSourceArray withOnTapForEach:(void(^)(TagView *tagView))onTapBlock
 {
     for (NSString *tagName in dataSourceArray) {
-        [[self addTag:tagName] setOnTap:onTapBlock];
+        TagView *tagView = [self addTag:tagName];
+        
+        if (onTapBlock)
+            tagView.onTap = onTapBlock;
     }
 }
 
