@@ -31,6 +31,7 @@ IB_DESIGNABLE
 @property (nonatomic) NSMutableArray *tagViews;
 @property (nonatomic) int rows;
 
+- (void)addTagsAccordingToDataSourceArray:(NSArray<NSString *> *)dataSourceArray withOnTapForEach:(void(^)(TagView *tagView))onTapBlock;
 - (TagView *)addTag:(NSString *)title;
 - (void)removeTag:(NSString *)title;
 - (void)removeAllTags;

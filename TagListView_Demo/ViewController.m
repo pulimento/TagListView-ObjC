@@ -28,6 +28,9 @@
     [self.tagListView addTag:@"some"];
     [self.tagListView addTag:@"example"];
     [self.tagListView addTag:@"tags"];
+    [self.tagListView addTagsAccordingToDataSourceArray:@[@"from", @"array", @"too"] withOnTapForEach:^(TagView *tagView) {
+        tagView.backgroundColor = [UIColor blueColor];
+    }];
     
     UIGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(listPressed)];    
     [self.tagListView addGestureRecognizer:recognizer];
