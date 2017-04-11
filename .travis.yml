@@ -5,8 +5,6 @@ before_install:
   - env
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
   - xcpretty --version
-  - xcodebuild --version
-  - xcodebuild --showsdks
 
 script:
   - xcodebuild clean build -project TagListObjC.xcodeproj -scheme TagObjc -sdk iphonesimulator -configuration Debug | xcpretty -c
