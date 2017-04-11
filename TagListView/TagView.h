@@ -16,11 +16,16 @@ IB_DESIGNABLE
 
 @property (nonatomic) IBInspectable CGFloat cornerRadius;
 @property (nonatomic) IBInspectable CGFloat borderWidth;
-@property (nonatomic) IBInspectable UIColor *borderColor;
-@property (nonatomic) IBInspectable UIColor *textColor;
 @property (nonatomic) IBInspectable CGFloat paddingY;
 @property (nonatomic) IBInspectable CGFloat paddingX;
-@property (nonatomic) UIFont *textFont;
+@property (nonatomic, strong) IBInspectable UIColor *borderColor;
+@property (nonatomic, strong) IBInspectable UIColor *textColor;
+@property (nonatomic, strong) IBInspectable UIColor *selectedTextColor;
+@property (nonatomic, strong) IBInspectable UIColor *tagBackgroundColor;
+@property (nonatomic, strong) IBInspectable UIColor *highlightedBackgroundColor;
+@property (nonatomic, strong) IBInspectable UIColor *selectedBackgroundColor;
+@property (nonatomic, strong) IBInspectable UIColor *selectedBorderColor;
+@property (nonatomic, strong) UIFont *textFont;
 
 @property (nonatomic, copy) void (^onTap)(TagView *);
 

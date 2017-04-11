@@ -13,39 +13,42 @@
 @synthesize textColor =_textColor;
 @synthesize textFont = _textFont;
 
-- (instancetype) initWithTitle:(NSString *)title {
-    self = [super init];
+- (instancetype) initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
     if(self) {
-        [self setTitle:title forState:UIControlStateNormal];
-        CGSize intrinsicSize = [self intrinsicContentSize];
-        self.frame = CGRectMake(0, 0, intrinsicSize.width, intrinsicSize.height);
+        [self setupView];
     }
     return self;
 }
 
-- (CGSize) intrinsicContentSize {
-    CGSize size = [self.titleLabel.text sizeWithAttributes:@{NSFontAttributeName: self.titleLabel.font}];
-    
-    size.height = self.titleLabel.font.pointSize + self.paddingY * 2;
-    size.width += self.paddingX * 2;
-    
-    return size;
+- (instancetype) initWithTitle:(NSString *)title {
+    self = [super init];
+    if(self) {
+        [self setTitle:title forState:UIControlStateNormal];
+        [self setupView];
+    }
+    return self;
 }
 
-# pragma mark - Getters
+- (void)setupView {
+    CGSize intrinsicSize = [self intrinsicContentSize];
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, intrinsicSize.width, intrinsicSize.height);
+}
+
+# pragma mark - Getters (default values)
 
 - (UIColor *)textColor {
-    if(!self.textColor) {
-        self.textColor = [UIColor blackColor];
+    if(!_textColor) {
+        _textColor = [UIColor whiteColor];
     }
-    return self.textColor;
+    return _textColor;
 }
 
 - (UIFont *)textFont {
-    if(!self.textFont) {
-        self.textFont = [UIFont systemFontOfSize:12];
+    if(!_textFont) {
+        _textFont = [UIFont systemFontOfSize:12];
     }
-    return self.textFont;
+    return _textFont;
 }
 
 # pragma mark - Setters
@@ -64,11 +67,19 @@
 - (void)setBorderColor:(UIColor *)borderColor {
     _borderColor = borderColor;
     self.layer.borderColor = borderColor.CGColor;
+    [self reloadStyles];
 }
 
 - (void)setTextColor:(UIColor *)textColor {
     _textColor = textColor;
     [self setTitleColor:textColor forState:UIControlStateNormal];
+    [self reloadStyles];
+}
+
+- (void)selectedTextColor:(UIColor *)selectedTextColor {
+    _selectedTextColor = selectedTextColor;
+    [self setTitleColor:selectedTextColor forState:UIControlStateSelected];
+    [self reloadStyles];
 }
 
 - (void)setPaddingY:(CGFloat)paddingY {
@@ -90,6 +101,76 @@
 - (void)setTextFont:(UIFont *)textFont {
     _textFont = textFont;
     [self.titleLabel setFont:textFont];
+}
+
+- (void)setTagBackgroundColor:(UIColor *)tagBackgroundColor {
+    _tagBackgroundColor = tagBackgroundColor;
+    [self setBackgroundColor:tagBackgroundColor];
+    [self reloadStyles];
+}
+
+- (void)setHighlightedBackgroundColor:(UIColor *)highlightedBackgroundColor {
+    _highlightedBackgroundColor = highlightedBackgroundColor;
+    [self reloadStyles];
+}
+
+- (void)setSelectedBackgroundColor:(UIColor *)selectedBackgroundColor {
+    _selectedBackgroundColor = selectedBackgroundColor;
+    [self reloadStyles];
+}
+
+- (void)setSelectedBorderColor:(UIColor *)selectedBorderColor {
+    _selectedBorderColor = selectedBorderColor;
+    [self reloadStyles];
+}
+
+- (BOOL)isHighlighted {
+    [self reloadStyles];
+    return [super isHighlighted];
+}
+
+- (BOOL)isSelected {
+    [self reloadStyles];
+    return [super isSelected];
+}
+
+# pragma mark - Methods
+
+- (CGSize) intrinsicContentSize {
+    CGSize size = [self.titleLabel.text sizeWithAttributes:@{NSFontAttributeName: self.titleLabel.font}];
+    
+    size.height = self.titleLabel.font.pointSize + self.paddingY * 2;
+    size.width += self.paddingX * 2;
+    
+    if(size.width < size.height) {
+        size.width = size.height;
+    }
+    
+    return size;
+}
+
+- (void)reloadStyles {
+    if([self isHighlighted]) {
+        if([self highlightedBackgroundColor]) {
+            [self setBackgroundColor:[self highlightedBackgroundColor]];
+        }
+    } else if ([self isSelected]) {
+        if([self selectedBackgroundColor]) {
+            [self setBackgroundColor:[self selectedBackgroundColor]];
+        } else {
+            [self setTagBackgroundColor:[self tagBackgroundColor]];
+        }
+        if([self selectedBorderColor]) {
+            [[self layer] setBorderColor:[[self selectedBorderColor] CGColor]];
+        } else {
+            [[self layer] setBorderColor:[[self borderColor] CGColor]];
+        }
+        [self setTitleColor:[self selectedTextColor] forState:UIControlStateNormal];
+    } else {
+        [self setBackgroundColor:[self tagBackgroundColor]];
+        [[self layer] setBorderColor:[[self borderColor] CGColor]];
+        [self setTitleColor:[self textColor] forState:UIControlStateNormal];
+    }
 }
 
 @end
