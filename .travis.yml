@@ -1,5 +1,12 @@
 language: objective-c
 osx_image: xcode8.3
-xcode_project: TagListObjC.xcodeproj
-xcode_scheme: TagObjc 
-xcode-sdk: iphonesimulator10.3
+
+before_install:
+  - env
+  - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+  - xcpretty --version
+  - xcodebuild --version
+  - xcodebuild --showsdks
+
+script:
+  - xcodebuild clean build -project TagListObjC.xcodeproj -scheme TagObjc -sdk iphonesimulator -configuration Debug | xcpretty -c
