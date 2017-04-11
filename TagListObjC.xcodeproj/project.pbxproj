@@ -134,7 +134,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 151819671B57BE89006A1000 /* Build configuration list for PBXProject "TagList Obj-C Demo" */;
+			buildConfigurationList = 151819671B57BE89006A1000 /* Build configuration list for PBXProject "TagListObjC" */;
 			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -313,7 +313,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		151819671B57BE89006A1000 /* Build configuration list for PBXProject "TagList Obj-C Demo" */ = {
+		151819671B57BE89006A1000 /* Build configuration list for PBXProject "TagListObjC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1518198D1B57BE89006A1000 /* Debug */,

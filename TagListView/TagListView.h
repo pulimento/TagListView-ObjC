@@ -14,6 +14,12 @@ IB_DESIGNABLE
 
 @interface TagListView : UIView
 
+typedef NS_ENUM(NSUInteger, TagListAlignment) {
+    alignLeft = 0,
+    alignCenter,
+    alignRight
+};
+
 @property (nonatomic) IBInspectable UIColor *textColor;
 @property (nonatomic) IBInspectable UIColor *tagBackgroundColor;
 @property (nonatomic) IBInspectable CGFloat cornerRadius;
@@ -23,13 +29,14 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable CGFloat paddingX;
 @property (nonatomic) IBInspectable CGFloat marginY;
 @property (nonatomic) IBInspectable CGFloat marginX;
+@property (nonatomic) TagListAlignment alignment;
 @property (nonatomic) UIFont *textFont;
 
 
 // Delegate variables
 @property (nonatomic) CGFloat tagViewHeight;
 @property (nonatomic) NSMutableArray *tagViews;
-@property (nonatomic) int rows;
+@property (nonatomic) NSInteger rows;
 
 - (void)addTagsAccordingToDataSourceArray:(NSArray<NSString *> *)dataSourceArray withOnTapForEach:(void(^)(TagView *tagView))onTapBlock;
 - (TagView *)addTag:(NSString *)title;

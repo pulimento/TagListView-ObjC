@@ -94,6 +94,11 @@
     [self invalidateIntrinsicContentSize];
 }
 
+- (void)setAlignment:(TagListAlignment)alignment {
+    _alignment = alignment;
+    [self rearrangeViews];
+}
+
 # pragma mark - Interface builder
 
 - (void)prepareForInterfaceBuilder {

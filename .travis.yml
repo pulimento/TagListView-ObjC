@@ -1,8 +1,5 @@
 language: objective-c
-osx_image: xcode8
-xcode_project: 'TagList Obj-C Demo.xcodeproj'
-xcode_scheme: TagObjc
-xcode_sdk:
-  - iphonesimulator10.0
-script:
-  - xcodebuild -project 'TagList Obj-C Demo.xcodeproj' -scheme TagObjc -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
+osx_image: xcode8.3
+xcode_project: TagListObjC.xcodeproj
+xcode_scheme: TagObjc 
+xcode-sdk: iphonesimulator10.3
