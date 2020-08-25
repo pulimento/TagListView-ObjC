@@ -124,15 +124,18 @@
     [self reloadStyles];
 }
 
-- (BOOL)isHighlighted {
+
+- (void)setIsHighlighted:(BOOL)isHighlighted{
+    _isHighlighted = isHighlighted;
     [self reloadStyles];
-    return [super isHighlighted];
 }
 
-- (BOOL)isSelected {
+- (void)setIsSelected:(BOOL)isSelected{
+    _isSelected = isSelected;
     [self reloadStyles];
-    return [super isSelected];
 }
+
+
 
 # pragma mark - Methods
 
@@ -150,11 +153,11 @@
 }
 
 - (void)reloadStyles {
-    if([self isHighlighted]) {
+    if(self.isHighlighted) {
         if([self highlightedBackgroundColor]) {
             [self setBackgroundColor:[self highlightedBackgroundColor]];
         }
-    } else if ([self isSelected]) {
+    } else if (self.isSelected) {
         if([self selectedBackgroundColor]) {
             [self setBackgroundColor:[self selectedBackgroundColor]];
         } else {
