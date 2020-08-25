@@ -25,6 +25,8 @@ IB_DESIGNABLE
 @property (nonatomic, strong) IBInspectable UIColor *highlightedBackgroundColor;
 @property (nonatomic, strong) IBInspectable UIColor *selectedBackgroundColor;
 @property (nonatomic, strong) IBInspectable UIColor *selectedBorderColor;
+@property (nonatomic, assign) BOOL isHighlighted;
+@property (nonatomic, assign) BOOL isSelected;
 @property (nonatomic, strong) UIFont *textFont;
 
 @property (nonatomic, copy) void (^onTap)(TagView *);
